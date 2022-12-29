@@ -26,6 +26,11 @@ class App extends Component {
     this.setState(newState)
   }
 
+  deleteCardByApp(indexCard){
+    this.state.notes.splice(indexCard,1);
+    this.setState(this.state.notes);
+  }
+
 
   /*Renderização */
   render() {
@@ -36,7 +41,9 @@ class App extends Component {
         <section className="conteudo">
 
           <FormRegister createCardByApp={this.createCardByApp.bind(this)}/>
-          <ListNotes notes={this.state.notes}/>
+          <ListNotes 
+            deleteCardByApp={this.deleteCardByApp.bind(this)}
+            notes={this.state.notes}/>
         </section>
       </div>
 
