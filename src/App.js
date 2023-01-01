@@ -4,6 +4,8 @@ import FormRegister from "./components/FormRegister";
 import ListCategories from "./components/ListCategories";
 import "./assets/App.css";
 import "./assets/index.css";
+import Categories from "./data/Categories";
+import ArrayNotes from "./data/ArrayNotes"
 
 
 class App extends Component {
@@ -11,36 +13,10 @@ class App extends Component {
 
   constructor() {
     super();
+    this.categories = new Categories();
+    this.notes = new ArrayNotes();
 
-    this.state = {
-      notes: [],
-      categories: []
-    }
   }
-
-  createCardByApp(title, textContent) {
-    const newNote = { title, textContent };
-    const newArrayNotes = [...this.state.notes, newNote];
-    const newState = {
-      notes: newArrayNotes,
-    }
-
-    this.setState(newState)
-  }
-
-  deleteCardByApp(indexCard) {
-    this.state.notes.splice(indexCard, 1);
-    this.setState(this.state.notes);
-  }
-
-  addCategoryByApp(category) {
-    const newCategory = category;
-    const newArrayCategories = [...this.state.categories, newCategory];
-    const newState = { ...this.state, categories: newArrayCategories };
-
-    this.setState(newState);
-  }
-
 
   /*Renderização */
   render() {
@@ -50,17 +26,19 @@ class App extends Component {
         <h1>Bloco de Notas</h1>
         <section className="conteudo">
 
-          <FormRegister createCardByApp={this.createCardByApp.bind(this)} />
+          <FormRegister
+            categories = {this.categories} 
+            createCardByApp={this.notes.addNote.bind(this.notes)} />
 
           <main className="conteudo-principal">
 
             <ListCategories
-              addCategoryByApp={this.addCategoryByApp.bind(this)}
-              categories={this.state.categories}/>
+              addCategoryByApp={this.categories.addCategory.bind(this.categories)}
+              categories={this.categories}/>
 
             <ListNotes
-              deleteCardByApp={this.deleteCardByApp.bind(this)}
-              notes={this.state.notes} />
+              deleteCardByApp={this.notes.removeNote.bind(this.notes)}
+              notes={this.notes} />
 
           </main>
           

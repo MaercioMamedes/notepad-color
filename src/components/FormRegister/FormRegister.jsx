@@ -8,6 +8,31 @@ class FormRegister extends Component{
         super(props);
         this.title = "";
         this.textContent = "";
+        this.category = "sem categoria";
+        this.state = {
+            categories: []
+        }
+
+        this._newsCategories = this._newsCategoriesMethod.bind(this);
+    }
+
+    componentDidMount(){
+        this.props.categories.subscribe(this._newsCategories);
+    }
+
+    componentWillUnmount(){
+        this.props.categories.unsubscribe(this._newsCategories)
+    }
+
+    _newsCategoriesMethod(categories){
+        console.log("atualizando categorias no form", categories)
+        this.setState({...this.state, categories });
+        console.log(this.state.categories,"array categoria do form")
+    }
+
+    _handleChangeCategory(event){
+        event.stopPropagation();
+        this.category = event.target.value;
     }
 
     _handleChangeTitle(event){
@@ -23,7 +48,7 @@ class FormRegister extends Component{
     _createCard(event){
         event.preventDefault();
         event.stopPropagation();
-        this.props.createCardByApp(this.title, this.textContent);
+        this.props.createCardByApp(this.title, this.textContent, this.category);
         document.querySelector("#input-title").value = "";
         document.querySelector("#input-text").value = "";
         
@@ -33,8 +58,21 @@ class FormRegister extends Component{
     /* renderização*/
     render(){
         return(
-            <form className="form-cadastro "
+            <form 
+                className="form-cadastro "
                 onSubmit={this._createCard.bind(this)}>
+
+                <select 
+                    className="form-cadastro_input"
+                    onChange={this._handleChangeCategory.bind(this)}
+                >
+                    <option>Sem categoria</option>
+
+                    {this.state.categories.map((category, index)=>{
+                        return <option key={index}>{category}</option>
+                    })}
+
+                </select>
 
                 <input 
                     id="input-title"
