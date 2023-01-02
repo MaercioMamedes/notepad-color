@@ -25,3 +25,11 @@
     font-size: 1.2em;
     margin-right: 12px;
   }
+
+  .priority-number-one{
+    background-color:#fb5607;
+  }
+
+  .priority-number-two{
+    background-color: #ffbe0b;
+  }

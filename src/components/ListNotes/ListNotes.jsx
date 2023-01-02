@@ -34,6 +34,7 @@ class ListNotes extends Component {
                     return (
                         <li className="lista-notas_item" key={index}>
                             <CardNote
+                            classProps = {note.getClassName()}
                             indexCard={index} 
                             title={note.title} 
                             textContent={note.textContent}

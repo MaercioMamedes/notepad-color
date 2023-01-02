@@ -32,6 +32,7 @@ class ListCategories extends Component {
         if(event.key === "Enter"){
             let valueCategory = event.target.value;
             this.props.addCategoryByApp(valueCategory);
+            document.getElementById("input-category").value="";
         }
     }
 
@@ -54,6 +55,7 @@ class ListCategories extends Component {
             
             <input 
                 type="text" 
+                id="input-category"
                 className="lista-categorias_input"
                 placeholder="Adicionar categoria"
                 onKeyUp={this._handleEventInput.bind(this)}

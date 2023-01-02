@@ -27,3 +27,20 @@
   .form-cadastro_submit:active {
     background-color: var(--secundaria-ativa);
   }
+
+  .classificacao-prioridade{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--fundo-detalhes);
+    margin-top: 8px;
+  }
+
+  .importante-input{
+    padding: 5px;
+    
+  }
+
+  .importante-input label{
+    margin: 0px 5px 0px 5px;
+    
+  }
