@@ -7,7 +7,7 @@ React: entendendo como a biblioteca funciona</a> da plataforma de ensino de tecn
 
 <p> Seu objetivo inicial é um gerenciador de notas/lembretes criados pelo usuário, que pode atribuir-lhes categorias e graus de prioridades, essas prioridades são destacadas com cores distintas de acordo com a atribuição usuário, que pode classificar a nota, como urgente, não urgente, importante e não importante</p>
 
-<img src="../notepad-color/src/docs/images/short.png"/>
+<img src="https://raw.githubusercontent.com/MaercioMamedes/notepad-color/master/src/docs/images/short.png"/>
 
 <h2>O código</h2>
 
