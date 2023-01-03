@@ -23,7 +23,7 @@ class App extends Component {
     return (
 
       <div>
-        <h1>Bloco de Notas</h1>
+        <h1 className="titulo-principal">Bloco de Notas</h1>
         <section className="conteudo">
 
           <FormRegister

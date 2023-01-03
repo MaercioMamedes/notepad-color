@@ -7,12 +7,15 @@ class FormRegister extends Component {
     constructor(props) {
         super(props);
         this.title = "";
-        this.textContent = "";
-        this.important = "";
+        this.textContent = false;
+        this.important = false;
         this.urgent = "";
         this.category = "sem categoria";
         this.state = {
-            categories: []
+            categories: [],
+            important:false,
+            urgent:false,
+            
         }
 
         this._newsCategories = this._newsCategoriesMethod.bind(this);
@@ -50,28 +53,33 @@ class FormRegister extends Component {
     _handleChangeImportInput(event) {
         event.stopPropagation();
         let inputEvent = event.target.value;
-        this.important = inputEvent === "true" ? true : false;
-        console.log(this.important);
+        console.log("Recebi a mundança ImportantInput: ",inputEvent);
+        let important = inputEvent === "true" ? true : false;
+
+        console.log("O valor que vai para o estado é: ", important);
+
+        console.log("o valor anterior do estado é: ", this.state.important);
+        this.setState({...this.state, important});
+        console.log("O novo estado é: ", this.state.important);
     }
 
     _handleChangeUrgentInput(event) {
         event.stopPropagation();
+        
         let inputEvent = event.target.value;
-        this.urgent = inputEvent === "true" ? true : false;
+        let urgent = inputEvent === "true" ? true : false;
+        this.setState({...this.state, urgent});
+
 
     }
 
     _createCard(event) {
         event.preventDefault();
-        event.stopPropagation();
-        this.props.createCardByApp(this.title, this.textContent, this.category, this.important, this.urgent);
+        event.stopPropagation();    
+        this.props.createCardByApp(this.title, this.textContent, this.category, this.state.important, this.state.urgent);
         document.querySelector("#input-title").value = "";
         document.querySelector("#input-text").value = "";
-        let inputImportant = document.getElementById("importante-false");
-        let inputUrgent = document.getElementById("urgente-false");
-        inputImportant.checked = true;
-        inputUrgent.checked = true;
-    
+
     }
 
 
