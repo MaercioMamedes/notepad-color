@@ -8,11 +8,17 @@ import Categories from "./data/Categories";
 import ArrayNotes from "./data/ArrayNotes"
 
 
+/*a classe App é o principal componente do projeto, nela são instanciados
+outros componentes do projeto */
+
 class App extends Component {
   /*Estrutura de Dados*/
 
   constructor() {
     super();
+    // Categories e ArrayNotes são classes helpers, que auxíliam no gerenciamento dos estados dos componentes que tem
+    // esses objetos como atributos
+    
     this.categories = new Categories();
     this.notes = new ArrayNotes();
 
