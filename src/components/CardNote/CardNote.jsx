@@ -12,7 +12,7 @@ class CardNote extends Component{
 
     render(){
         return(
-            <section className={'card-nota' + ' ' + this.props.classProps}>
+            <section className={'card-nota ' + this.props.classProps}>
                 <header className="card-nota_cabecalho">
                     <h3 className="card-nota_titulo">{this.props.title}</h3>
                     <IconDelete onClick={this._delete_card.bind(this)} />
